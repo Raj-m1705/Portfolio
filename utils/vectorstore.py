@@ -24,6 +24,6 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 vector_store = FAISS.from_texts(chunks, embedding_model)
 
 # Save FAISS index locally
-vector_store.save_local("raj_vector_store")
+vector_store.save_local("D:\projects\Appa_resume_automation\raj_vector_store")
 
 print("✅ Vector store created and saved locally as 'raj_vector_store'.")
