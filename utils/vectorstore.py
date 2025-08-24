@@ -3,7 +3,7 @@ from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings  # updated import
 
 # Load extracted text
-with open("raj_data.txt", "r", encoding="utf-8") as f:
+with open("utils/raj_data.txt", "r", encoding="utf-8") as f:
     policy_text = f.read()
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -24,6 +24,6 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 vector_store = FAISS.from_texts(chunks, embedding_model)
 
 # Save FAISS index locally
-vector_store.save_local("D:\projects\Appa_resume_automation\raj_vector_store")
+vector_store.save_local("raj_vector_store")
 
 print("✅ Vector store created and saved locally as 'raj_vector_store'.")
