@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="about" class="container section">
+  <h2>About Me</h2>
+  <p>
+    I am a Chartered Accountant and Strategic Finance Leader with over 28 years of experience across consulting, IT, oil & gas, banking, and logistics. I specialize in transforming Global Capability Centers (GCCs) and Shared Services into strategic business partners by delivering cost optimization, digital enablement, BI-driven performance, and talent development.
+  </p>
+</section>
+
+<section id="projects" class="container section projects">
+  <h2>Career Highlights</h2>
+  <div class="grid">
+    <article class="card">
+      <h3>Principal Consultant, Sumedhas (2022 – Present)</h3>
+      <p>Advisor on finance transformation, BI, outcome-based costing, and fractional CFO for global clients.</p>
+    </article>
+    <article class="card">
+      <h3>Director & Business Head, Agility GFSSC (2018 – 2022)</h3>
+      <p>Led 225+ FTE; transitioned SSC from transactional to strategic, embedded automation, improved stakeholder trust.</p>
+    </article>
+    <article class="card">
+      <h3>VP – Finance Transformation, Standard Chartered Bank (2010 – 2016)</h3>
+      <p>Designed and implemented the “Manage by Metrics” BI framework and global finance operations scorecard.</p>
+    </article>
+    <article class="card">
+      <h3>Senior Finance Roles at Shell, Cognizant, DAMCO</h3>
+      <p>Led finance operations, ERP transformations, and global shared services scaling with 700+ FTE.</p>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="container section">
+  <h2>Contact & Chat</h2>
+  <div class="contact-info">
+    <p>Email: <a href="mailto:tsmraj@gmail.com">tsmraj@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/rajkumar-meenakshisundaram-588b522" target="_blank">linkedin.com/in/rajkumar-meenakshisundaram-588b522</a></p>
+  </div>
+
+  <div class="chat-wrap">
+    <div id="chatLog" class="chat-log"></div>
+    <form id="chatForm" class="chat-form">
+      <input id="chatInput" autocomplete="off" placeholder="Say hi...">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+<footer class="container footer">
+  <img src="{{ url_for('static', filename='img/p2.jpg') }}" alt="Raj alternate headshot" class="footer-img">
+  <p>© 2025 Rajkumar Meenakshisundaram • Built with Flask</p>
+</footer>
+
+{% endblock %}
