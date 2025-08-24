@@ -1,6 +1,6 @@
 import streamlit as st
 from pathlib import Path
-from your_rag_module import query_rag  # Replace with your RAG query function
+from rag import query_rag  # Replace with your RAG query function
 
 st.set_page_config(
     page_title="Interactive Portfolio",
