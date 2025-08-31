@@ -2,29 +2,37 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
+import os
 
-MODEL_PATH = "tinyllama"
-FAISS_STORE_PATH = "raj_vector_store"
-LOCAL_EMBEDDING_PATH = "local_embeddings"
+# ---- Paths (ensure these exist in ./backend when you deploy) ----
+MODEL_PATH = os.getenv("MODEL_PATH", "tinyllama")              # "tinyllama" HF model id or local folder
+FAISS_STORE_PATH = os.getenv("FAISS_STORE_PATH", "raj_vector_store")
+LOCAL_EMBEDDING_PATH = os.getenv("LOCAL_EMBEDDING_PATH", "local_embeddings")  # local folder or HF id
 
-# Load TinyLLaMA once
+# ---- Load Model Once ----
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, use_fast=True)
-model = AutoModelForCausalLM.from_pretrained(MODEL_PATH).eval()
+model = AutoModelForCausalLM.from_pretrained(MODEL_PATH)
+model.eval()
 if torch.cuda.is_available():
     model = model.to("cuda")
 
-# Load FAISS with local embeddings
+# ---- Load Embeddings + Vector Store ----
 embedding_model = HuggingFaceEmbeddings(model_name=LOCAL_EMBEDDING_PATH)
-vector_store = FAISS.load_local(FAISS_STORE_PATH, embedding_model, allow_dangerous_deserialization=True)
 
-def query_rag(query, max_new_tokens=300):
+# allow_dangerous_deserialization=True is required for FAISS.load_local in many setups
+vector_store = FAISS.load_local(
+    FAISS_STORE_PATH,
+    embedding_model,
+    allow_dangerous_deserialization=True
+)
+
+def query_rag(query: str, max_new_tokens: int = 300) -> str:
     retriever = vector_store.as_retriever(search_kwargs={"k": 3})
-    
-    # Use invoke() instead of deprecated get_relevant_documents
-    docs = retriever.invoke(query)
-    
-    context = "\n\n".join([doc.page_content for doc in docs])
-    
+
+    # get docs
+    docs = retriever.invoke(query)  # new LC pattern
+    context = "\n\n".join([doc.page_content for doc in docs]) if docs else ""
+
     prompt = f"""You are a helpful assistant trained to answer questions strictly based on the provided Rajkumar's Profile.
 
 Context:
@@ -53,6 +61,5 @@ Answer:"""
         )
 
     generated_ids = outputs[0][prompt_length:]
-    generated_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
-
+    generated_text = tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
     return generated_text
