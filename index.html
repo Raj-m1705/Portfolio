@@ -10,24 +10,33 @@
 <body>
   <!--===== HEADER =====-->
   <header class="l-header">
-    <nav class="nav bd-grid">
-        <a href="#" class="nav__logo">Rajkumar</a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">Expertise</a></li>
-          <li class="nav__item"><a href="#work" class="nav__link">Journey</a></li>
-          <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </div>        
+  <nav class="nav bd-grid">
+    <a href="#" class="nav__logo">Rajkumar</a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
 
-      <div class="nav__toggle" id="nav-toggle">
-        <i class='bx bx-menu'></i>
-      </div>
-    </nav>
-  </header>
+        <!-- Dropdown for "What Matters" -->
+        <li class="nav__item nav__dropdown">
+          <a class="nav__lin" id="wh">What Matters <i class='bx bx-chevron-down'></i></a>
+          <ul class="nav__dropdown-menu">
+            <li><a href="#skills" class="nav__link">Expertise</a></li>
+            <li><a href="#work" class="nav__link">Journey</a></li>
+            <li><a href="#bring-to-table" class="nav__link">What I Bring</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
+        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>        
+
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header>
 
   <main class="l-main">
     <!--===== HOME =====-->
@@ -297,7 +306,36 @@
     </div>
   </div>
 </section>
+<!--===== WHAT I BRING TO THE TABLE =====-->
+<section class="bring-to-table section" id="bring-to-table">
+  <h2 class="section-title">What I Bring to the Table</h2>
 
+  <div class="table-container">
+    <div class="table-card">
+      <div class="icon">💡</div>
+      <h3>Innovative Strategies</h3>
+      <p>Transforming ideas into actionable plans that drive business growth and efficiency.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="icon">🤝</div>
+      <h3>Team Leadership</h3>
+      <p>Building high-performing teams, mentoring talent, and fostering collaboration.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="icon">📊</div>
+      <h3>Data-Driven Decisions</h3>
+      <p>Leveraging analytics and insights to make informed, measurable business decisions.</p>
+    </div>
+
+    <div class="table-card">
+      <div class="icon">🚀</div>
+      <h3>Business Transformation</h3>
+      <p>Driving change through innovative processes and operational excellence.</p>
+    </div>
+  </div>
+</section>
     <!--===== CONTACT =====-->
     <section class="contact section" id="contact">
   <h2 class="section-title">Contact</h2>
