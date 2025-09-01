@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // === Send via EmailJS ===
-      emailjs.send("service_2fr3lod", "template_9a33lc3", {
+      emailjs.send("*", "*", {
         title: "Portfolio Contact",
         name: name,
         email: email,
@@ -136,4 +136,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-

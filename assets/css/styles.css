@@ -203,21 +203,6 @@ html, body {
   font-size: 1.6rem;
   cursor: pointer;
 }
-/* VIDEO PROFILE SECTION */
-.video-container {
-  width: 100%;
-  max-width: 1000px; /* optional max width */
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 10px; /* optional rounded corners */
-}
-
-.video-profile-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fill container and crop excess */
-  display: block;
-}
 
 
 /* ===== MOBILE NAV (<=767px) - slide-in menu using transform ===== */
