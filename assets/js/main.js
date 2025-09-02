@@ -127,3 +127,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+const flipBook = (elBook) => {
+  // Initialize current page
+  elBook.style.setProperty("--c", 0);
+
+  // Set index for each page and add click listener
+  elBook.querySelectorAll(".page").forEach((page, idx) => {
+    page.style.setProperty("--i", idx);
+
+    page.addEventListener("click", (evt) => {
+      // Ignore clicks on links
+      if (evt.target.closest("a")) return;
+
+      // If back side clicked, set current to idx, else idx + 1
+      const curr = evt.target.closest(".back") ? idx : idx + 1;
+      elBook.style.setProperty("--c", curr);
+    });
+  });
+};
+
+// Only target books inside .flipbook-section
+document.querySelectorAll(".flipbook-section .book").forEach(flipBook);

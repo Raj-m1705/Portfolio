@@ -1783,6 +1783,7 @@ html, body {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 2rem;
   }
+  
 }
 @media screen and (min-width: 992px) {
   .bd-grid {
@@ -1797,73 +1798,119 @@ html, body {
   }
 }
 /* what I bring to the table  */
-/* Section Styling */
-.bring-to-table .section-title::after {
-  content: "";
-  position: absolute;
-  width: 64px;
-  height: 0.18rem;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 100%;          /* start right after the text */
-  margin-top: 0.5rem; /* spacing between text and line */
-  background-color: var(--first-color);
+
+* { box-sizing: border-box; }
+
+/* FlipBook Section */
+.flipbook-section {
+  display: flex;
+  flex-direction: column; /* Stack title and book */
+  align-items: center;    /* Center horizontally */
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: visible; /* make sure title is visible */
+  color: hsl(180 68% 5%);
 }
 
-  /* Container */
-  .table-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
 
-  /* Cards */
-  .table-card {
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 260px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
+.flipbook-section .book {
+  position: relative;
+  display: flex;
+  margin: auto;
+  width: 40cqmin;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  rotate: 1 0 0 30deg;
+  counter-reset: page -1;
+}
 
-  .table-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  }
+.flipbook-section .book a {
+  color: inherit;
+}
 
-  .table-card .icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-  }
+.flipbook-section .page {
+  --thickness: 4;
+  flex: none;
+  display: flex;
+  width: 100%;
+  font-size: 2cqmin;
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition:
+    transform 1s,
+    rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ( calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * .23cqmin)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+  box-shadow: 0em .5em 1em -.2em #00000020;
+}
 
-  .table-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
+.flipbook-section .front,
+.flipbook-section .back {
+  position: relative;
+  flex: none;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
+  translate: 0px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  padding: 2em;
+  border: 1px solid #0002;
+}
 
-  .table-card p {
-    font-size: 0.95rem;
-    color: #555;
-  }
+.flipbook-section .front:has(img),
+.flipbook-section .back:has(img) {
+  padding: 0;
+}
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    .table-container {
-      gap: 20px;
-    }
-  }
+.flipbook-section .front img,
+.flipbook-section .back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  @media (max-width: 600px) {
-    .table-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+.flipbook-section .front::after,
+.flipbook-section .back::after {
+  position: absolute;
+  bottom: 1em;
+  counter-increment: page;
+  font-size: 0.8em;
+}
 
+.flipbook-section .front::after {
+  right: 1em;
+}
 
-  
+.flipbook-section .back::after {
+  left: 1em;
+}
+
+.flipbook-section .front {
+  background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
+  border-radius: .1em .5em .5em .1em;
+}
+
+.flipbook-section .back {
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+  background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
+  border-radius: .5em .1em .1em .5em;
+}
+
+.flipbook-section .cover {
+  background: radial-gradient(circle farthest-corner at 80% 20%, hsl(150 80% 20% / .3) 0%, hsl(170 60% 10% / .1) 100%),
+    hsl(231, 32%, 29%);
+  color: hsl(200 30% 98%);
+}
+
+.flipbook-section .cover::after {
+  content: "";
+}
