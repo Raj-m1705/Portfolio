@@ -10,24 +10,33 @@
 <body>
   <!--===== HEADER =====-->
   <header class="l-header">
-    <nav class="nav bd-grid">
-        <a href="#" class="nav__logo">Rajkumar</a>
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#skills" class="nav__link">Expertise</a></li>
-          <li class="nav__item"><a href="#work" class="nav__link">Journey</a></li>
-          <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </div>        
+  <nav class="nav bd-grid">
+    <a href="#" class="nav__logo">Rajkumar</a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
 
-      <div class="nav__toggle" id="nav-toggle">
-        <i class='bx bx-menu'></i>
-      </div>
-    </nav>
-  </header>
+        <!-- Dropdown for "What Matters" -->
+        <li class="nav__item nav__dropdown">
+          <a class="nav__lin" id="wh">What Matters <i class='bx bx-chevron-down'></i></a>
+          <ul class="nav__dropdown-menu">
+            <li><a href="#skills" class="nav__link">Expertise</a></li>
+            <li><a href="#work" class="nav__link">Journey</a></li>
+            <li><a href="#bring-to-table" class="nav__link">What I Bring</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a href="#testimonials" class="nav__link">Testimonials</a></li>
+        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>        
+
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header>
 
   <main class="l-main">
     <!--===== HOME =====-->
@@ -296,7 +305,81 @@
       </div>
     </div>
   </div>
+  <div  id="bring-to-table" ></div>
+  <br>
 </section>
+
+<!--===== WHAT I BRING TO THE TABLE =====-->
+<section class="flipbook-section">
+  <h2 class="section-title">What I Bring to the Table</h2>
+  <div class="book-hint">📖 Flip the pages like a book with a click</div>
+  <div class="book">
+    <div class="page">
+      <div class="front cover">
+        <h1>My purpose is simple</h1>
+        <p>To Enable organizations to build future-ready, resilient, and strategically aligned finance and shared services functions that create long-term value.</p>
+        Click here to know how ->
+      </div>
+      <div class="back">
+        <img src="assets\img\pg1.png"/>
+       
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h2><s>Efficiency Gaps</s> <span>Efficient and Effective</span></h2>
+         <p>Continuous improvement, digital enablement, Six Sigma methodologies.</p>
+      </div>
+      <div class="back">
+        <h2><s>Rising Costs</s> <span>Optimal costs</span></h2>
+         <p>Automation, process reengineering, outcome-based costing - Delivered sustainable savings across functions.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <img src="assets\img\pg2.png"/> 
+      </div>
+      <div class="back">
+        <img src="assets\img\pg3.png"/>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h2><s>Low Strategic Maturity</s>  <span>Value adding partner</span></h2>
+         <p>Shift from transactional execution to strategic business support - Elevated GCCS up the value
+chain</p>
+      </div>
+      <div class="back">
+        <h2><s>Talent Pressure</s> <span>Ownership driven talent</span></h2>
+         <p>Leadership development, upskilling programs, retention initiatives - Boosted morale, productivity, and built high impact teams.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <img src="assets\img\pg4.png"/>
+      </div>
+      <div class="back">
+        <img src="assets\img\pg5.png"/>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="front">
+        <h2><s>Weak Business Alignment</s> <br> <span>Shared goals</span></h2>
+         <p >Insight-driven decision making, initiative- taking stakeholder engagement - Secured trust and strategic alignment.</p>
+      </div>
+      <div class="back cover">
+        <h1>Connect & Collaborate</h1>
+        <p>I welcome conversations with CXOs, board members, consulting partners & shared services leaders who are looking for strategic finance and GCC leadership that delivers measurable impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!--===== CONTACT =====-->
     <section class="contact section" id="contact">
