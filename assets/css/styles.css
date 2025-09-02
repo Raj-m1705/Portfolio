@@ -53,6 +53,9 @@ body {
 h1, h2, p {
   margin: 0;
 }
+s{
+  color:red;
+}
 
 ul {
   margin: 0;
@@ -402,6 +405,10 @@ html, body {
 }
 
 /* ===== ABOUT =====*/
+.about-section p {
+  text-align: left;
+  text-justify: inter-word;
+}
 .about__container {
   row-gap: 2rem;
   text-align: center;
@@ -893,6 +900,11 @@ html, body {
   .about__img img {
     width: 300px;
   }
+  .about-section p {
+    text-align:right;
+    text-justify: inter-word;
+  }
+
   .skills__container {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
@@ -1913,4 +1925,12 @@ html, body {
 
 .flipbook-section .cover::after {
   content: "";
+}
+.book-hint {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+  margin: 8px 0 16px 0;
+  opacity: 0.9;
 }
