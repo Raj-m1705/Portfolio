@@ -1829,7 +1829,7 @@ html, body {
   position: relative;
   display: flex;
   margin: auto;
-  width: 40cqmin;
+  width: 48cqmin;
   pointer-events: none;
   transform-style: preserve-3d;
   transition: translate 1s;
@@ -1847,7 +1847,7 @@ html, body {
   flex: none;
   display: flex;
   width: 100%;
-  font-size: 2cqmin;
+  font-size: 2.4cqmin;
   pointer-events: all;
   user-select: none;
   transform-style: preserve-3d;
