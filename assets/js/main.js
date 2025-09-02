@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    emailjs.send("*", "*", {title: "Portfolio Contact", name, email, message})
+    emailjs.send("service_2fr3lod", "template_9a33lc3", {title: "Portfolio Contact", name, email, message})
       .then(() => { alert("✅ Message sent successfully!"); contactForm.reset(); })
       .catch((err) => { console.error("EmailJS error:", err); alert("❌ Failed to send message. Please try again later."); });
   });
