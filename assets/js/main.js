@@ -69,6 +69,8 @@ sr.reveal('.testimonial-card', {interval: 150, origin: 'right'});
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   if (!contactForm) return;
+  const contactStatus = document.getElementById("contact-status");
+  const submitButton = contactForm.querySelector('input[type="submit"]');
 
   contactForm.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -85,8 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const namePattern = /^[A-Za-z\s]{2,50}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
-    const messagePattern = /^(?!.*(test|dummy|asdf|qwerty)).*[A-Za-z0-9]{3,}.*$/i;
-
     if (!namePattern.test(name)) {
       alert("⚠️ Please enter a valid full name (letters only).");
       return;
@@ -95,14 +95,34 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("⚠️ Please enter a valid email.");
       return;
     }
-    if (message.length < 10 || !messagePattern.test(message)) {
+    if (message.length < 10) {
       alert("⚠️ Please enter a meaningful message (min 10 characters).");
       return;
     }
 
+    if (contactStatus) contactStatus.textContent = "Sending your message...";
+    if (submitButton) submitButton.disabled = true;
+
     emailjs.send("service_2fr3lod", "template_9a33lc3", {title: "Portfolio Contact", name, email, message})
-      .then(() => { alert("✅ Message sent successfully!"); contactForm.reset(); })
-      .catch((err) => { console.error("EmailJS error:", err); alert("❌ Failed to send message. Please try again later."); });
+      .then(() => {
+        if (contactStatus) contactStatus.textContent = "Message sent successfully. Thank you for getting in touch.";
+        contactForm.reset();
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        const statusCode = Number.isFinite(err?.status) ? ` (Error ${err.status})` : "";
+        const errorDetails = typeof err?.text === "string"
+          ? err.text
+          : typeof err?.message === "string"
+            ? err.message
+            : "No additional error details were returned.";
+        if (contactStatus) {
+          contactStatus.textContent = `Message could not be sent${statusCode}: ${errorDetails}`;
+        }
+      })
+      .finally(() => {
+        if (submitButton) submitButton.disabled = false;
+      });
   });
 });
 

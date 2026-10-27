@@ -315,6 +315,41 @@ img{
     }
     &__img{
         border-radius: .5rem;
+
+        & img{
+            border-radius: .5rem;
+        }
+    }
+
+    &__credentials{
+        margin-top: 1.5rem;
+    }
+
+    &__credentials-title{
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    &__credentials-list{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+
+        & li{
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.85rem;
+            border-left: 3px solid var(--first-color);
+            border-radius: 0.35rem;
+            background: #f5f6fb;
+        }
+
+        & span{
+            color: #5b6472;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
     }
 }
 /* ===== WORK =====*/
@@ -356,6 +391,19 @@ img{
         font-size: var(--normal-font-size);
         cursor: pointer;
         margin-left: auto;
+
+        &:disabled{
+            cursor: wait;
+            opacity: 0.65;
+        }
+    }
+
+    &__status{
+        min-height: 1.5em;
+        margin-top: 1rem;
+        color: var(--second-color);
+        font-size: var(--smaller-font-size);
+        line-height: 1.5;
     }
 }
 
@@ -521,5 +569,146 @@ img{
         &__img{
             width: 450px;
         }
+    }
+}
+
+/* ===== MAATHAVAM ===== */
+.maathavam{
+    &__container{
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    &__intro{
+        padding: clamp(1.5rem, 4vw, 3rem);
+        border: 1px solid rgba(59, 41, 207, 0.12);
+        border-radius: 20px;
+        background: linear-gradient(135deg, #f3f5ff, #fff 62%);
+        box-shadow: 0 8px 24px rgba(20, 32, 70, 0.07);
+    }
+
+    &__eyebrow{
+        margin-bottom: 0.75rem;
+        color: #3b29cf;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    &__heading{
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    &__text{
+        max-width: 760px;
+        color: #4b5563;
+        line-height: 1.75;
+    }
+
+    &__services{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 1.75rem 0;
+    }
+
+    &__service{
+        padding: 1.25rem;
+        border: 1px solid #e8eaf2;
+        border-radius: 12px;
+        background: #fff;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+        &:hover{
+            transform: translateY(-5px);
+            border-color: rgba(59, 41, 207, 0.28);
+            box-shadow: 0 10px 24px rgba(20, 32, 70, 0.1);
+        }
+
+        & h4{
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        & p{
+            color: #5b6472;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    }
+
+    &__icon{
+        margin-bottom: 0.75rem;
+        color: #3b29cf;
+        font-size: 1.5rem;
+    }
+
+    &__link{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover{
+            gap: 0.75rem;
+        }
+    }
+}
+
+.footer{
+    &__icon{
+        display: inline-block;
+        transition: color 0.2s ease, transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible{
+            color: #b7c3ff;
+            transform: translateY(-3px);
+        }
+    }
+
+    &__site-link{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+        transition: color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+
+        &:hover,
+        &:focus-visible{
+            color: #b7c3ff;
+            border-color: currentColor;
+            gap: 0.65rem;
+        }
+    }
+}
+
+.footer__icon:focus-visible,
+.footer__site-link:focus-visible,
+.maathavam__link:focus-visible{
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .footer__icon,
+    .footer__site-link,
+    .maathavam__service,
+    .maathavam__link{
+        transition: none;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .maathavam__services{
+        grid-template-columns: 1fr;
+    }
+
+    .about__credentials-list{
+        grid-template-columns: 1fr;
     }
 }
